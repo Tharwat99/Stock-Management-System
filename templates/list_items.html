@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load i18n_switcher %}
+{% load switcher %}
+{% load crispy_forms_tags %}
+{% block title %}{% trans 'Stocks' %}{% endblock title%}
+{% block content %}
+    <div class="mb-3" style="color: #555">
+         <h1 class = 'text-center'>{% trans 'Stocks' %}</h1>
+    </div>
+    <div class = "search-box out {%if current_lang == 'ar' %} text-right {% else %}text-left{% endif %}" style="">
+        <h4 class="text-center mt-1 mb-3">{% trans 'Search about stocks' %}</h4>
+        <hr/>
+        <form method="POST" action = '' class="mb-2">{% csrf_token %}
+            <div class = 'form-group'>
+               {{ form|crispy}}
+            </div>
+            <div class = 'form-group'>
+                <input type="submit" value = 'Search' class = 'btn main-btn float-right'>
+            </div> 
+        </form>
+        <span class = 'toggle-btn'><i class="fa fa-search fa-fw"></i></span>
+    </div>
+    <div class = 'table-responsive'>
+        <table class = 'table table-page'>
+        	<thead>
+        		<tr>
+        			<th>#</th>
+        			<th>{% trans 'CATEGORY' %}</th>
+        			<th>{% trans 'ITEM NAME' %}</th>
+        			<th>{% trans 'QUANTITY' %}</th>
+                    <th>{% trans 'PRICE' %}</th>
+                    <th>{% trans 'RATING' %}</th>
+                    <th>{% trans 'ADDED BY' %}</th>
+                    <th>{% trans 'SHOW' %}</th>
+                    <th>{% trans 'EDIT' %}</th>
+                    <th>{% trans 'DELETE' %}</th>
+                    <th>{% trans 'ISSUE' %}</th>
+                    <th>{% trans 'RECEIVE' %}</th>
+
+        		</tr>
+        	</thead>	
+    		{% for obj in objs %}
+    		    <tr>
+                    <td style="background:#0062cc;color:#FFF;font-weight: bold">
+                        {%if current_lang == 'ar' %} {{forloop.counter|number_convertor}}
+                        {% else %}{{forloop.counter}}{% endif %}
+                    </td>
+        			<td>{{obj.Category}}</td>
+    				<td>{{obj.Item_name}}</td>
+    				<td>
+                        {%if current_lang == 'ar' %}{{obj.Quantity|number_convertor}}
+                        {% else %}{{obj.Quantity}}{% endif %}
+                    </td>
+                    <td>
+                        {%if current_lang == 'ar' %}{{obj.Price|number_convertor}}
+                        {% else %}{{obj.Price}}{% endif %}
+                    </td>
+                    <td>{% autoescape off %}{{obj.Rating|switch_rating}}{% endautoescape %}</td>
+                    <td>{{obj.Added_by}}</td>
+                    <td>
+                        <a href = "{% url 'detail' obj.id %}" class = 'badge badge-primary p-2'>
+                            <i class = 'fa fa-eye fa-fw'></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href = "{% url 'update' obj.id %}" class = 'badge badge-success p-2'>
+                            <i class = 'fa fa-edit fa-fw'></i>
+                        </a> 
+                    </td>
+                    <td >
+                        <a href = "{% url 'delete' obj.id %}" class = 'badge badge-danger p-2'>
+                            <i class = 'fa fa-trash fa-fw'></i>
+                        </a>  
+                    </td>
+                    <td>
+                        <a href = "{% url 'issue' obj.id %}" class = 'badge badge-secondary p-2'>
+                            <i class = 'fa fa-minus fa-fw'></i>
+                        </a>
+                    </td>  
+                    <td>
+                        <a href = "{% url 'receive' obj.id %}" class = 'badge badge-info p-2'><i class = 'fa fa-plus fa-fw'></i>
+                        </a>
+                    </td>  
+                </tr>
+            {% endfor %}	
+        </table>    	
+    </div>
+{% endblock %}
+	

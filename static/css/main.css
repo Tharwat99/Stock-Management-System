@@ -1,0 +1,92 @@
+body {
+  	padding-top: 4.5rem;
+  	/*background-image:url('../img/74378.png') ;
+	background-size:cover;
+*/
+}
+.search-box{
+	border: 1px solid #CCC;
+    display: :inline-block;
+    position: absolute;
+    padding: 35px;
+    background: #EEE;
+    left: -500px;
+    min-width:500px;
+    top:80px; 
+}
+.search-box .toggle-btn{
+	left: 500px;
+    position: absolute;
+    top: 50%;
+    border: 2px solid #CCC;
+    padding: 5px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.search-box .toggle-btn{
+	opacity: 1;
+}
+.card{
+	padding: 20px;
+	max-width: 500px;
+	margin: auto;
+}
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.table {
+	font-size: 14px;
+	text-align: center;
+	width: 95%;
+	margin: auto;
+	border:1px solid #AAA;
+	margin-bottom:20px;
+}
+.table tr:nth-child(odd){
+	background: #DDD;
+}
+.table tr:nth-child(even){
+	background: #EEE;
+}
+.table td{
+	border:1px solid #AAA	;
+}
+.table th{
+	background: #333;
+	color:#FFF;
+ 	border:1px solid #AAA;
+}
+.jumbotron {
+	padding : 30px 30px 10px 10px;
+	background: #f8f9fa;
+}
+.paging-nav {
+  text-align:center;
+  padding-top:2px;
+}
+.paging-nav a {
+  margin:auto 1px;
+  text-decoration:none;
+  display: inline-block;
+  padding:1px 7px;
+  background:#AAA;
+  color:white;
+  border-radius:3px;
+}
+.paging-nav .selected-page {
+  background:#187ed5;
+  font-weight:bold;
+}
+
+
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+	  font-size: 3.5rem;
+	}
+}
+

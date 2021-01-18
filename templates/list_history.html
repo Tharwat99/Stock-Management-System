@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load switcher %}
+{% load i18n_switcher %}
+{% load crispy_forms_tags %}
+{% block title %}Items{% endblock title%}
+{% block content %}
+<div class="mb-4" style="color: #555">
+         <h1 class = 'text-center'>{% trans 'History' %}</h1>
+    </div>
+    <div class = "search-box out {%if current_lang == 'ar' %} text-right {% else %}text-left{% endif %}">
+        <h4 class="text-center mt-1 mb-3">Search about stocks </h4>
+        <hr/>
+        <form method="POST" action = '' class="mb-2">{% csrf_token %}
+            <div class = 'form-group'>
+                {{ form|crispy }}
+                <input type="submit" value = 'Search' class = 'form-control btn btn-primary'>
+            </div>
+        </form>
+        <span class = 'badge badge-danger toggle-btn'><i class="fa fa-search fa-fw"></i></span>
+    </div>
+    <div class = 'table-responsive'>
+        <table class = 'table table-page'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{% trans 'ITEM NAME' %}</th>
+                    <th>{% trans 'QUANTITY' %}</th>
+                    <th>{% trans 'OPERATION' %}</th>
+                    <th>{% trans 'OPERATE TO' %}</th>
+                    <th>{% trans 'OPERATE BY' %}</th>
+                    <th>{% trans 'CREATED AT' %}</th>
+                    <th>{% trans 'LAST UPDATE' %}</th>
+                    <th>{% trans 'SHOW' %}</th>
+                </tr>
+            </thead>    
+            {% for obj in objs %}
+                <tr>
+                    <td style="background:#0062cc;color:#FFF;font-weight: bold">
+                        {%if current_lang == 'ar' %} {{forloop.counter|number_convertor}}
+                        {% else %}{{forloop.counter}}{% endif %}
+                    </td>
+                    <td>{{obj.Item_name}}</td>
+                    <td>
+                        {%if current_lang == 'ar' %}{{obj.Quantity|number_convertor}}
+                        {% else %}{{obj.Quantity}}{% endif %}
+                    </td>
+                    {% if obj.Receive_qty != -1 %}
+                    <td>Receive : {{obj.Receive_qty}}</td>
+                    {% else %}
+                    <td>Issue   : {{obj.Issue_qty}}</td>
+                    {% endif %}
+
+                    {% if obj.Receive_qty != -1 %}
+                    <td>{{obj.Receive_from}}</td>
+                    {% else %}
+                    <td>{{obj.Issue_to}}</td>
+                    {% endif %}
+                    
+                    {% if obj.Receive_qty != -1 %}
+                    <td>{{obj.Receive_by}}</td>
+                    {% else %}
+                    <td>{{obj.Issue_by}}</td>
+                    {% endif %} 
+                    <td>{{obj.Timestamp}}</td>
+                    <td>{{obj.Last_update}}</td>
+                    <td>
+                       <a href = "{% url 'detail' obj.id %}" class = 'badge badge-primary'><i class = 'fa fa-eye fa-fw'></i></a>
+                    </td>
+                     
+                </tr>
+            {% endfor %}    
+        </table>        
+    </div>
+{% endblock %}
+	

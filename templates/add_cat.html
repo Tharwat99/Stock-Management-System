@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n_switcher %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block title %}Items{% endblock title%}
+{% block content %}
+   <div class="card mt-5 {%if current_lang == 'ar' %} text-right {% else %}text-left{% endif %}">
+	   	<h4 class = 'text-center mb-5'>{% trans 'Add Category' %}</h4>
+	    <form method="POST" action = ''>{% csrf_token %}
+			{{ form|crispy }}
+			<input type="submit" value = "{% trans 'Save' %}" class = 'btn main-btn {%if current_lang == "ar" %} float-left {% else %}float-right{% endif %}'>
+		</form>
+  </div>
+{% endblock %}

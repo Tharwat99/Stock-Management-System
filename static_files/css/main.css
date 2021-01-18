@@ -1,0 +1,227 @@
+body {
+  	padding-top: 4.5rem;
+  	overflow-x: hidden;
+}
+
+.navbar{
+	border-bottom :2px solid #bbbbbb ;
+	border-right  :2px solid #bbbbbb ;
+	border-left   :2px solid #bbbbbb ;
+	background: #ffffffa3;
+}
+.navbar .navbar-nav .nav-item  a{
+	color:#333;
+	font-weight: bold;
+	border-left: 3px solid #0062cc36;
+	margin-right: 4px;
+}
+.navbar .navbar-nav .nav-item a:hover,
+.navbar .navbar-nav .nav-item a:focus{
+	color:#000;
+	border-left : 3px solid #0062cc91;
+	transition:all .5s ease-in-out;
+	-webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+	-o-transition:all .5s ease-in-out;
+	transition:all .5s ease-in-out;
+	
+}
+.navbar .navbar-nav .active a{
+	color:#000;
+	border-left: 3px solid #0062cc;
+}
+.main-color{
+	color:#0062cc;	
+	font-weight:bold;
+}
+.main-btn{
+	background: #FFF;
+    color: #0062cc99;
+    font-weight: bold;
+    padding: 9px;
+    border: 2px solid #0062cc99;
+}
+
+.main-btn:hover, 
+.main-btn:focus{
+	background: #0062cc;
+    color: #FFF;
+    transition:all .5s ease-in-out;
+	-webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+	-o-transition:all .5s ease-in-out;
+	transition:all .5s ease-in-out;
+
+}
+
+.danger-btn{
+	background: #FFF;
+    color: #cc0000a3;
+    font-weight: bold;
+    padding: 9px;
+    border: 2px solid #cc0000a3;
+}
+
+.danger-btn:hover, 
+.danger-btn:focus{
+	background: #cc0000fc;
+    color: #FFF;
+    transition:all .5s ease-in-out;
+	-webkit-transition:all .5s ease-in-out;
+	-moz-transition:all .5s ease-in-out;
+	-o-transition:all .5s ease-in-out;
+	transition:all .5s ease-in-out;
+
+}
+.search-box{
+	border: 2px solid #0062cc99;
+    display: :inline-block;
+    position: absolute;
+    padding: 10px;
+    background: #FFF;
+    left: 0;
+    min-width:500px;
+    top:70px; 
+    border-radius: 0 10px 10px 0;
+}
+.toggle-btn-out{
+	border: 2px solid #0062cc99;
+    width: 35px;
+    height: 45px;
+    display: inline-block;
+    text-align: center;
+    padding-top: 7px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: #0062cc99;
+}
+
+.toggle-btn-out:hover,
+.toggle-btn-out:focus,
+.toggle-btn-active{
+	background: #0062cc;
+	color:#FFF;
+	cursor: pointer;
+}
+
+.search-box{
+	border: 2px solid #0062cc99;
+    display: :inline-block;
+    position: absolute;
+    padding: 10px;
+    background: #FFF;
+    left: -500px;
+    min-width:500px;
+    top:80px; 
+    border-radius: 0 10px 10px 0;
+}
+.search-box .toggle-btn{
+	left: 498px;
+    position: absolute;
+    top: 50%;
+    border: 2px solid #0062cc99;
+    padding: 6px;
+    cursor: pointer;
+    background: #FFF;
+    color:#0062cc99;
+}
+
+.search-box .toggle-btn:hover,
+.search-box .toggle-btn:focus{
+	background:#0062cc;
+	color:#FFF;
+}
+.search-box h4{
+	background: #0062cc;
+    padding: 10px;
+    color: #FFF;
+    border-radius: 0 10px 0 0;
+}
+.card{
+	padding: 20px;
+	max-width: 550px;
+	margin: auto;
+	border:1px solid  #0062cc99;
+	border-radius: 10px 10px 0 0;
+}
+.card h4{
+	background: #0062cc;
+    padding: 10px;
+    color: #FFF;
+    border-radius: 10px 10px 0 0;
+}
+
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.table {
+	font-size: 14px;
+	text-align: center;
+	width: 95%;
+	margin: auto;
+	border:1px solid #FFF;
+	margin-bottom:20px;
+}
+.table tr:nth-child(odd){
+	background: #FFF;
+}
+.table tr:nth-child(even){
+	background: #0062cc20;
+}
+.table td{
+	padding: 0.4rem;
+	border:1px solid #AAA;
+}
+.table th{
+	background: #0062cc;
+	color:#FFF;
+ 	border:1px solid #FFF;
+ 	border-bottom: none;
+}
+.jumbotron {
+	padding : 30px 30px 10px 10px;
+	background: #f8f9fa;
+}
+.paging-nav {
+  text-align:center;
+  padding-top:2px;
+  margin: 15px 0;
+}
+.paging-nav a {
+  margin:auto 1px;
+  text-decoration:none;
+  display: inline-block;
+  padding:1px 7px;
+  background:#AAA;
+  color:white;
+  border-radius:3px;
+}
+.paging-nav .selected-page {
+  background:#187ed5;
+  font-weight:bold;
+}
+
+
+.footer{
+	background: #343a40;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+	  font-size: 3.5rem;
+	}
+}
+

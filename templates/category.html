@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load switcher %}
+{% load i18n_switcher %}
+{% load crispy_forms_tags %}
+{% block title %}Categories{% endblock title%}
+{% block content %}
+    <div class="mb-4" style="color: #555">
+         <h1 class = 'text-center'>{% trans 'Categories' %}</h1>
+    </div>
+    <div class = 'table-responsive'>
+        <table class = 'table table-page'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>{% trans 'CATEGORY' %}</th>
+                    <th>{% trans 'RATING' %}</th>
+                    <th>{% trans 'STOCKS COUNT' %}</th>
+                    <th>{% trans 'CREATED AT' %}</th>
+                    <th>{% trans 'LAST UPDATE' %}</th>
+                </tr>
+            </thead>
+            {% for obj in objs %}    
+            <tr>
+                <td style="background:#0062cc;color:#FFF;font-weight: bold">
+                    {%if current_lang == 'ar' %} {{forloop.counter|number_convertor}}
+                    {% else %}{{forloop.counter}}{% endif %}
+                </td>
+                <td>{{obj.Name}}</td>
+                <td>{% autoescape off %}{{obj.Rate|switch_rating}}{% endautoescape %}</td>
+                <td>{{obj.stock_count|number_convertor}}</td>
+                <td>{{obj.Timestamp}}</td>
+                <td>{{obj.Last_update}}</td> 
+            </tr>  
+            {% endfor %}  
+        </table>        
+    </div>
+{% endblock %}
+	

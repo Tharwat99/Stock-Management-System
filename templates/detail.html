@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load switcher %}
+{% load crispy_forms_tags %}
+{% block title %}Detail{% endblock title%}
+{% block content %}
+    <h1 class = 'text-center h2 mb-4 mt-1' >{{obj.Item_name}}</h1>
+    <div class = 'table-responsive'>
+        <table class = 'table'>
+            <thead>
+                <tr>
+                    <th>{% trans 'CATEGORY' %}</th>
+                    <th>{% trans 'ITEM NAME' %}</th>
+                    <th>{% trans 'QUANTITY' %}</th>
+                    <th>{% trans 'PRICE' %}</th>
+                    <th>{% trans 'RATING' %}</th>
+                    <th>{% trans 'ADDED BY' %}</th>
+                    <th>{% trans 'CREATED AT' %}</th>
+                    <th>{% trans 'LAST UPDATE' %}</th>
+                    <th>{% trans 'LAST ISSUE' %}</th>
+                    <th>{% trans 'LAST RECEIVE' %}</th>
+                </tr>
+            </thead>
+            <tr>
+                <td>{{obj.Category}}</td>
+                <td>{{obj.Item_name}}</td>
+                <td>{{obj.Quantity}}</td>
+                <td>{{obj.Price}}</td>
+                <td>{% autoescape off %}{{obj.Rating|switch_rating}}{% endautoescape %}</td>
+                <td>{{obj.Added_by}}</td>
+                <td>{{obj.Timestamp|date}}</td>
+                <td>{{obj.Last_update|date}}</td>
+                <td>{{obj.Issue_qty}}</td>
+                <td>{{obj.Receive_qty}}</td>
+            </tr>   
+            <tr>
+                <td colspan="4" class = 'delete-btn'>
+                    <a href = "{% url 'delete' obj.id %}" >
+                    <i class = 'fa fa-trash fa-2x mt-1'></i>
+                    </a>
+                </td>
+                <td colspan="4" class = 'update-btn'> 
+                    <a href = "{% url 'update' obj.id %}">
+                    <i class = 'fa fa-edit fa-2x mt-1'></i>
+                    </a>
+                </td>
+                <td colspan="1" class = 'issue-btn'>
+                    <a href = "{% url 'issue' obj.id %}">
+                    <i class = 'fa fa-minus fa-2x mt-1'></i>
+                    </a>
+                </td>
+                <td colspan="1" class = 'receive-btn'>
+                    <a href = "{% url 'receive' obj.id %}">
+                    <i class = 'fa fa-plus fa-2x mt-1'></i>
+                    </a>
+                </td>
+            </tr> 
+        </table>        
+    </div>
+{% endblock %}
+	
